@@ -17,8 +17,13 @@ let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (err, repos) => {
   // save a repo or repos to mongodb
-  if(err) console.error(err);
-  console.log(repos)
+  if(err) {
+    console.error(err);
+  } else if (repos.isNew) {
+    console.log(repos)
+  } else {
+    console.log("repo already exists")
+  }
 }
 
 module.exports.save = save;
