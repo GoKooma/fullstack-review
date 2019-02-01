@@ -19,6 +19,7 @@ let getReposByUsername = (username, cb) => {
     if (err) console.error(err);
     console.log('statusCode:', response && response.statusCode);
     console.log('body:', body);
+    cb(null, response);
   })
 
 }
