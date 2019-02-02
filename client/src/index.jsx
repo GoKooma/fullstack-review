@@ -27,12 +27,10 @@ class App extends React.Component {
     axios
       .get(`/repos/${term}`, { params: { owner: term }})
       .then((data) => {
-        console.log(data);
         this.setState({
           repos: data.data,
           username: data.data[0].owner
         })
-        console.log(this.state.repos)
       })
       .catch((err) => {
         console.error(err);
@@ -53,11 +51,12 @@ class App extends React.Component {
 
   render () {
     return (
-    <div>
-      <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos} user={this.state.username}/>
-      <Search onSearch={this.search.bind(this)} repos={this.state.repos}/>
-    </div>)
+      <div>
+        <h1>Github Fetcher</h1>
+        <RepoList repos={this.state.repos} user={this.state.username}/>
+        <Search onSearch={this.search.bind(this)} repos={this.state.repos}/>
+      </div>
+    )
   }
 }
 
