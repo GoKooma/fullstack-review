@@ -1,4 +1,4 @@
-const request = require('request');
+const rp = require('request-promise');
 const config = require('../config.js');
 
 let getReposByUsername = (username, cb) => {
@@ -15,12 +15,16 @@ let getReposByUsername = (username, cb) => {
     }
   };
 
-  request(options, (err, response, body) => {
-    if (err) console.error(err);
-    console.log('statusCode:', response && response.statusCode);
-    console.log('body:', body);
-    cb(null, response);
-  })
+  // request(options, (err, response, body) => {
+  //   if (err) {
+  //     console.error(err);
+  //     cb(err);
+  //   }
+  //   console.log('statusCode:', response && response.statusCode);
+  //   // console.log('body:', body);
+  //   cb(null, response);
+  // })
+  return rp(options);
 
 }
 
